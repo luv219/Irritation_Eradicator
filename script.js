@@ -29,7 +29,6 @@ function createCrack(x, y) {
     document.getElementById('wall-container').appendChild(crack);
 }
 
-// script.js
 document.getElementById('photo-button').addEventListener('click', function() {
     document.querySelector('.container').style.display = 'none';
     document.getElementById('photo-option-container').style.display = 'block';
@@ -70,4 +69,26 @@ function displayPhoto(file) {
         }
     };
     reader.readAsDataURL(file);
+}
+
+function enableLoveEffect() {
+    const photo = document.getElementById('user-photo');
+    photo.addEventListener('click', function(e) {
+        createHeartOrKiss(e.pageX, e.pageY);
+    });
+}
+
+function createHeartOrKiss(x, y) {
+    const images = ['images/heart.png', 'images/kiss.png'];
+    const img = document.createElement('img');
+    img.src = images[Math.floor(Math.random() * images.length)];
+    img.className = 'love-effect';
+    img.style.left = x + 'px';
+    img.style.top = y + 'px';
+    document.getElementById('photo-container').appendChild(img);
+
+    // Remove the image after animation
+    setTimeout(() => {
+        img.remove();
+    }, 2000);
 }
