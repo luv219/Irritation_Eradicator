@@ -21,7 +21,6 @@ wallImage.addEventListener('click', function(e) {
     }
 });
 
-
 function createCrack(x, y) {
     const crack = document.createElement('div');
     crack.className = 'crack';
