@@ -12,11 +12,15 @@ wallImage.addEventListener('click', function(e) {
     wallClicks++;
     createCrack(e.pageX, e.pageY);
 
+    // Reduce opacity gradually
+    wallImage.style.opacity = 1 - (wallClicks / maxClicks * 0.9);
+
     if (wallClicks >= maxClicks) {
         wallImage.style.opacity = 0;
         alert('The wall has been completely broken down!');
     }
 });
+
 
 function createCrack(x, y) {
     const crack = document.createElement('div');
