@@ -92,3 +92,35 @@ function createHeartOrKiss(x, y) {
         img.remove();
     }, 2000);
 }
+
+//burn effect 
+let burnClicks = 0;
+const maxBurnClicks = 20;
+
+function enableBurnEffect() {
+    const photo = document.getElementById('user-photo');
+    photo.addEventListener('click', function(e) {
+        burnClicks++;
+        createBurnMark(e.pageX, e.pageY);
+
+        if (burnClicks >= maxBurnClicks) {
+            burnPhoto();
+        }
+    });
+}
+
+function createBurnMark(x, y) {
+    const burn = document.createElement('img');
+    burn.src = 'images/burn_mark.png';
+    burn.className = 'burn-effect';
+    burn.style.left = x + 'px';
+    burn.style.top = y + 'px';
+    document.getElementById('photo-container').appendChild(burn);
+}
+
+function burnPhoto() {
+    const photo = document.getElementById('user-photo');
+    photo.style.transition = 'opacity 2s';
+    photo.style.opacity = 0;
+    alert('The photo has been completely burned!');
+}
