@@ -73,3 +73,18 @@ button {
         opacity: 0;
     }
 }
+
+.burn-effect {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: burn-animation 2s forwards;
+}
+
+@keyframes burn-animation {
+    to {
+        opacity: 1;
+    }
+}
